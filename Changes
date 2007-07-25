@@ -1,0 +1,21 @@
+========================
+2007-03-22 11:45:01 0.01
+========================
+
+  2007-03-22 11:43:55 (r2) by bingos
+  lib/POE/Component/Server/POP3.pm A; README A; tools A; t/00_use.t A;
+  lib/POE/Component/Server A; t A; lib A; MANIFEST A; t/99_pod.t A;
+  Changes A; lib/POE/Component/Server/POP3/Constants.pm A; examples A;
+  examples/synopsis.pl A; lib/POE/Component/Server/POP3 A;
+  t/99_pod_coverage.t A; tools/svn-log.perl A; t/10_basic.t A;
+  Makefile.PL A; lib/POE A; t/99_test_kwalitee.t A; lib/POE/Component A
+
+    Documented, examples added and tests written
+
+  2007-03-21 11:25:20 (r1) by svn; /trunk A; /branches A; /tags A
+
+    Initial repository layout
+
+==============
+End of Excerpt
+==============
