@@ -1,13 +1,14 @@
 package POE::Component::Server::POP3;
 
 use strict;
-use POE qw(Wheel::ReadWrite Filter::Line);
+use warnings;
+use POE qw(Wheel::SocketFactory Wheel::ReadWrite Filter::Line);
 use base qw(POE::Component::Pluggable);
 use POE::Component::Pluggable::Constants qw(:ALL);
 use Socket;
 use vars qw($VERSION);
 
-$VERSION = '0.03';
+$VERSION = '0.04';
 
 sub spawn {
   my $package = shift;
@@ -99,8 +100,8 @@ sub _start {
 
 sub _accept_client {
   my ($kernel,$self,$socket,$peeraddr,$peerport) = @_[KERNEL,OBJECT,ARG0..ARG2];
-  my $sockaddr = inet_ntoa( ( unpack_sockaddr_in ( getsockname $socket ) )[1] );
-  my $sockport = ( unpack_sockaddr_in ( getsockname $socket ) )[0];
+  my $sockaddr = inet_ntoa( ( unpack_sockaddr_in ( CORE::getsockname $socket ) )[1] );
+  my $sockport = ( unpack_sockaddr_in ( CORE::getsockname $socket ) )[0];
   $peeraddr = inet_ntoa( $peeraddr );
 
   my $wheel = POE::Wheel::ReadWrite->new(

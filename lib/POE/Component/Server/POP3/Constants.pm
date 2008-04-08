@@ -1,14 +1,15 @@
 package POE::Component::Server::POP3::Constants;
 
+require Exporter;
+@ISA = qw( Exporter );
+%EXPORT_TAGS = ( 'ALL' => [ qw( POP3D_EAT_NONE POP3D_EAT_CLIENT POP3D_EAT_PLUGIN POP3D_EAT_ALL ) ] );
+Exporter::export_ok_tags( 'ALL' );
+
 use strict;
+use warnings;
 use vars qw($VERSION);
 
-$VERSION = '0.01';
-
-require Exporter;
-our @ISA = qw( Exporter );
-our %EXPORT_TAGS = ( 'ALL' => [ qw( POP3D_EAT_NONE POP3D_EAT_CLIENT POP3D_EAT_PLUGIN POP3D_EAT_ALL ) ] );
-Exporter::export_ok_tags( 'ALL' );
+$VERSION = '0.02';
 
 # Our constants
 sub POP3D_EAT_NONE	() { 1 }

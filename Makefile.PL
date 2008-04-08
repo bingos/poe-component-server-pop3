@@ -1,3 +1,4 @@
+use strict;
 use inc::Module::Install;
 name 'POE-Component-Server-POP3';
 author 'Chris Williams <chris@bingosnet.co.uk>';
@@ -5,7 +6,11 @@ license 'perl';
 version_from 'lib/POE/Component/Server/POP3.pm';
 abstract_from 'lib/POE/Component/Server/POP3.pm';
 build_requires 'Test::More' => 0.47;
+requires 'warnings::compat' => 0 if $] < 5.006;
 requires 'Socket' => 0;
 requires 'POE' => 0.38;
+requires 'POE::Wheel::SocketFactory' => 0;
+requires 'POE::Wheel::ReadWrite' => 0;
+requires 'POE::Filter::Line' => 0;
 requires 'POE::Component::Pluggable' => 0.03;
 WriteAll();
