@@ -1,4 +1,14 @@
 ========================
+2008-04-08 11:35:40 0.04
+========================
+
+  2008-04-08 11:33:57 (r8) by bingos
+  lib/POE/Component/Server/POP3.pm M; Makefile.PL M; Changes M;
+  lib/POE/Component/Server/POP3/Constants.pm M
+
+    Some kwalitee fixes, and fixed some issues as a result. 
+
+========================
 2007-10-31 14:16:17 0.03
 ========================
 

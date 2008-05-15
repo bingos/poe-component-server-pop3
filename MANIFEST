@@ -10,6 +10,7 @@ inc/Module/Install/WriteAll.pm
 examples/synopsis.pl
 lib/POE/Component/Server/POP3.pm
 lib/POE/Component/Server/POP3/Constants.pm
+LICENSE
 Makefile.PL
 MANIFEST			This list of files
 META.yml
@@ -18,5 +19,4 @@ t/00_use.t
 t/10_basic.t
 t/99_pod.t
 t/99_pod_coverage.t
-t/99_test_kwalitee.t
 tools/svn-log.perl

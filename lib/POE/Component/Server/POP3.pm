@@ -8,7 +8,7 @@ use POE::Component::Pluggable::Constants qw(:ALL);
 use Socket;
 use vars qw($VERSION);
 
-$VERSION = '0.04';
+$VERSION = '0.06';
 
 sub spawn {
   my $package = shift;
@@ -78,6 +78,7 @@ sub _start {
     $self->{sessions}->{$sender_id}->{'ref'} = $sender_id;
     $kernel->refcount_increment($sender_id, __PACKAGE__);
     $kernel->post( $sender, 'pop3d_registered', $self );
+    $kernel->detach_myself();
   }
 
   $self->{filter} = POE::Filter::Line->new( Literal => "\015\012" );
@@ -805,6 +806,12 @@ The basic anatomy of a plugin is:
 =head1 AUTHOR
 
 Chris C<BinGOs> Williams <chris@bingosnet.co.uk>
+
+=head1 LICENSE
+
+Copyright L<(c)> Chris Williams
+
+This module may be used, modified, and distributed under the same terms as Perl itself. Please see the license that came with your Perl distribution for details.
 
 =head1 SEE ALSO
 

@@ -58,6 +58,12 @@ Value: 4
 
 Chris 'BinGOs' Williams <chris@bingosnet.co.uk>
 
+=head1 LICENSE
+
+Copyright L<(c)> Chris Williams
+
+This module may be used, modified, and distributed under the same terms as Perl itself. Please see the license that came with your Perl distribution for details.
+
 =head1 SEE ALSO
 
 L<POE::Component::Server::POP3>
