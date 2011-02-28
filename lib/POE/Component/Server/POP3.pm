@@ -319,7 +319,7 @@ sub send_to_client {
 sub _send_to_client {
   my ($kernel,$self,$id,$output) = @_[KERNEL,OBJECT,ARG0..ARG1];
   return unless $self->_conn_exists( $id );
-  return unless $output;
+  return unless defined $output;
 
   return 1 if $self->_pluggable_process( 'POP3C', 'response', $id, \$output ) == PLUGIN_EAT_ALL;
 
@@ -336,6 +336,7 @@ sub POP3D_connection {
 }
 
 'poppet';
+
 __END__
 
 =head1 NAME
