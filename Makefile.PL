@@ -13,7 +13,7 @@ requires 'POE::Wheel::SocketFactory' => 0;
 requires 'POE::Wheel::ReadWrite' => 0;
 requires 'POE::Filter::Line' => 0;
 requires 'POE::Component::Pluggable' => 0.03;
-makemaker_args(dist => { PREOP => "git log --summary --no-merges --date=short --tags > ./Changes" });
+makemaker_args(dist => { PREOP => "$^X tools/git-log.pl > ./Changes" });
 auto_provides;
 githubmeta;
 WriteAll();
