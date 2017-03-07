@@ -1,21 +1,20 @@
 package POE::Component::Server::POP3;
 
+#ABSTRACT: A POE framework for authoring POP3 servers
+
 use strict;
 use warnings;
 use POE qw(Wheel::SocketFactory Wheel::ReadWrite Filter::Line);
 use base qw(POE::Component::Pluggable);
 use POE::Component::Pluggable::Constants qw(:ALL);
 use Socket;
-use vars qw($VERSION);
-
-$VERSION = '0.10';
 
 sub spawn {
   my $package = shift;
   my %opts = @_;
   $opts{lc $_} = delete $opts{$_} for keys %opts;
   my $options = delete $opts{options};
-  $opts{version} = join('-', __PACKAGE__, $VERSION ) unless $opts{version};
+  $opts{version} = join('-', __PACKAGE__, $POE::Component::Server::POP3::VERSION ) unless $opts{version};
   $opts{handle_connects} = 1 unless defined $opts{handle_connects} and !$opts{handle_connects};
   $opts{hostname} = 'localhost' unless defined $opts{hostname};
   my $self = bless \%opts, $package;
@@ -47,7 +46,7 @@ sub getsockname {
 sub _conn_exists {
   my ($self,$wheel_id) = @_;
   return 0 unless $wheel_id and defined $self->{clients}->{ $wheel_id };
-  return 1; 
+  return 1;
 }
 
 sub _valid_cmd {
@@ -68,7 +67,7 @@ sub _start {
   $self->{session_id} = $_[SESSION]->ID();
   if ( $self->{alias} ) {
 	$kernel->alias_set( $self->{alias} );
-  } 
+  }
   else {
 	$kernel->refcount_increment( $self->{session_id} => __PACKAGE__ );
   }
@@ -114,11 +113,11 @@ sub _accept_client {
   );
 
   return unless $wheel;
-  
+
   my $id = $wheel->ID();
-  $self->{clients}->{ $id } = 
-  { 
-				wheel    => $wheel, 
+  $self->{clients}->{ $id } =
+  {
+				wheel    => $wheel,
 				peeraddr => $peeraddr,
 				peerport => $peerport,
 				sockaddr => $sockaddr,
@@ -258,7 +257,7 @@ sub _unregister_sessions {
   foreach my $session_id ( keys %{ $self->{sessions} } ) {
      if (--$self->{sessions}->{$session_id}->{refcnt} <= 0) {
         delete $self->{sessions}->{$session_id};
-	$poe_kernel->refcount_decrement($session_id, __PACKAGE__) 
+	$poe_kernel->refcount_decrement($session_id, __PACKAGE__)
 		unless ( $session_id eq $pop3d_id );
      }
   }
@@ -337,11 +336,11 @@ sub POP3D_connection {
 
 'poppet';
 
-__END__
+=pod
 
-=head1 NAME
+=for Pod::Coverage POP3D_connection
 
-POE::Component::Server::POP3 - A POE framework for authoring POP3 servers
+=cut
 
 =head1 SYNOPSIS
 
@@ -803,16 +802,6 @@ The basic anatomy of a plugin is:
                 # Return an exit code
                 return POP3D_EAT_NONE;
         }
-
-=head1 AUTHOR
-
-Chris C<BinGOs> Williams <chris@bingosnet.co.uk>
-
-=head1 LICENSE
-
-Copyright E<copy> Chris Williams
-
-This module may be used, modified, and distributed under the same terms as Perl itself. Please see the license that came with your Perl distribution for details.
 
 =head1 SEE ALSO
 

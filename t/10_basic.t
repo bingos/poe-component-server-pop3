@@ -4,8 +4,8 @@ use Test::More;
 use POE qw(Component::Server::POP3 Wheel::SocketFactory Wheel::ReadWrite Filter::Line);
 
 my %data = (
-	tests => [ 
-		[ '+OK' => 'cock' ], 
+	tests => [
+		[ '+OK' => 'cock' ],
 		[ '-ERR' => 'quit' ],
 	],
 );

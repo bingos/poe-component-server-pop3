@@ -1,5 +1,7 @@
 package POE::Component::Server::POP3::Constants;
 
+#ABSTRACT: importable constants for POE::Component::Server::POP3 plugins.
+
 require Exporter;
 @ISA = qw( Exporter );
 %EXPORT_TAGS = ( 'ALL' => [ qw( POP3D_EAT_NONE POP3D_EAT_CLIENT POP3D_EAT_PLUGIN POP3D_EAT_ALL ) ] );
@@ -7,9 +9,6 @@ Exporter::export_ok_tags( 'ALL' );
 
 use strict;
 use warnings;
-use vars qw($VERSION);
-
-$VERSION = '0.10';
 
 # Our constants
 sub POP3D_EAT_NONE	() { 1 }
@@ -17,12 +16,9 @@ sub POP3D_EAT_CLIENT	() { 2 }
 sub POP3D_EAT_PLUGIN	() { 3 }
 sub POP3D_EAT_ALL	() { 4 }
 
-1;
-__END__
+qq[POP3 will eat itself];
 
-=head1 NAME
-
-POE::Component::Server::POP3::Constants - importable constants for POE::Component::Server::POP3 plugins.
+=pod
 
 =head1 SYNOPSIS
 
@@ -53,16 +49,6 @@ Value: 3
 Value: 4
 
 =back
-
-=head1 MAINTAINER
-
-Chris 'BinGOs' Williams <chris@bingosnet.co.uk>
-
-=head1 LICENSE
-
-Copyright E<copy> Chris Williams
-
-This module may be used, modified, and distributed under the same terms as Perl itself. Please see the license that came with your Perl distribution for details.
 
 =head1 SEE ALSO
 
